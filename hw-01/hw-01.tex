@@ -1,0 +1,212 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-tabla]{babel}
+\decimalpoint
+\let\cleardoublepage\clearpage
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{esint}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{anysize}
+\usepackage{anyfontsize}
+\usepackage{pdfpages}
+\usepackage{makeidx}
+% \usepackage{mathtools}
+\makeindex 
+\usepackage[x11names,table]{xcolor}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{bm}
+\usepackage[left=2cm,top=2cm,right=2cm,bottom=2cm]{geometry}
+\setlength{\parindent}{0cm}
+\tcbset{colback=green!5!white, colframe=gray!10!black, coltitle=green!20!black, 
+fonttitle=\bfseries, colbacktitle=white, coltext=gray!30!black}
+\addto\captionsspanish{
+  \renewcommand{\figurename}{{\bf Figura}}% 
+}
+\usepackage{epigraph}
+\usepackage{xcolor}
+
+% Colores
+\definecolor{verdep}{rgb}{0.5,0.5,0.9}
+\definecolor{ccap}{rgb}{0.2,0.2,0.2}
+\definecolor{csec}{rgb}{0.4,0.4,0.4}
+\definecolor{csubsec}{rgb}{0.6,0.6,0.6}
+\definecolor{cenun}{rgb}{0.2,0.2,0.3}
+\definecolor{csol}{rgb}{0.2,0.8,0.1}
+\definecolor{backcode}{rgb}{0.95,0.95,0.99}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+% Nuevos comandos
+
+\usepackage{titlesec}%--
+\newcommand{\hsp}{\hspace{5pt}}
+
+% Code
+
+\lstnewenvironment{apdl}{\lstset{frame=single,
+  frameround=tttt,
+  backgroundcolor=\color{backcode},
+  language={},
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3,
+  extendedchars=true,
+  inputencoding=utf8,
+  literate=%
+  {°}{{\,\,$^\circ$\,\,}}1
+  {á}{{\'a}}1
+  {é}{{\'e}}1
+  {í}{{\'i}}1
+  {ó}{{\'o}}1
+  {ú}{{\'u}}1
+  {Á}{{\'A}}1
+  {É}{{\'E}}1
+  {Í}{{\'I}}1
+  {Ó}{{\'O}}1
+  {Ú}{{\'U}}1
+}}{}
+
+
+\author{Pedro Jorge De Los Santos Lara}
+\title{Robótica - MCIM}
+
+
+% ======================================================================================================
+\begin{document}
+\maketitle
+
+\textbf{1.} Probar que: $ ^{j}\vec{\omega}^{m} \times \vec{b_{2}} = \frac{^{j} d \vec{b_2} }{dt}  $. \\
+
+Con la expresión de la velocidad angular $^{j}\vec{\omega}^{m}$ podemos escribir:
+
+$$ 
+^{j}\vec{\omega}^{m} \times \vec{b_{2}} = 
+\left( 
+\vec{b_1} \frac{^{j} d \vec{b_2} }{dt} \cdot \vec{b_3} +
+\vec{b_2} \frac{^{j} d \vec{b_3} }{dt} \cdot \vec{b_1} +
+\vec{b_3} \frac{^{j} d \vec{b_1} }{dt} \cdot \vec{b_2}
+\right) \times \vec{b_2}
+\,\, = \,\,
+\vec{b_3} \frac{^{j} d \vec{b_2} }{dt} \cdot \vec{b_3} - 
+\vec{b_1} \frac{^{j} d \vec{b_1} }{dt} \cdot \vec{b_2}
+$$
+
+Luego, se tiene que:
+
+$$
+\vec{b_2} \cdot \vec{b_2} = 1
+$$
+
+Entonces:
+
+$$ 
+\frac{^{j} d \vec{b_2} }{dt} \cdot \vec{b_2} + \vec{b_2} \cdot \frac{^{j} d \vec{b_2} }{dt} = 0
+ \,\,\,\,\,\, \rightarrow \,\,\,\,\,\,
+\frac{^{j} d \vec{b_2} }{dt} \cdot \vec{b_2} = 0  
+\,\,\,\,\,\, \rightarrow \,\,\,\,\,\,
+\vec{b_2} \frac{^{j} d \vec{b_2} }{dt} \cdot \vec{b_2} = \vec{0}
+$$
+
+De manera similar para:
+
+$$
+\vec{b_2} \cdot \vec{b_1} = 0
+$$
+
+Se tiene que:
+
+$$
+\frac{^{j} d \vec{b_2} }{dt} \cdot \vec{b_1} + \vec{b_2} \cdot \frac{^{j} d \vec{b_1} }{dt} = 0
+ \,\,\,\,\,\, \rightarrow \,\,\,\,\,\,
+\frac{^{j} d \vec{b_2} }{dt} \cdot \vec{b_1} = - \frac{^{j} d \vec{b_1} }{dt} \cdot \vec{b_2}
+$$
+
+Sustituyendo en la expresión obtenida:
+
+$$
+^{j}\vec{\omega}^{m} \times \vec{b_{2}} = 
+\frac{^{j} d \vec{b_2} }{dt} \cdot \vec{b_1}  \vec{b_1} +
+\frac{^{j} d \vec{b_2} }{dt} \cdot \vec{b_2}  \vec{b_2} +
+\frac{^{j} d \vec{b_2} }{dt} \cdot \vec{b_3}  \vec{b_3} = 
+\frac{^{j} d \vec{b_2} }{dt}
+$$
+
+\vspace{5mm}
+\hline
+\vspace{5mm}
+
+\textbf{2.} Probar que: $ ^{j}\vec{\omega}^{m} \times \vec{b_{3}} = \frac{^{j} d \vec{b_3} }{dt}  $. \\
+
+Con la expresión de la velocidad angular $^{j}\vec{\omega}^{m}$ podemos escribir:
+
+$$ 
+^{j}\vec{\omega}^{m} \times \vec{b_{3}} = 
+\left( 
+\vec{b_1} \frac{^{j} d \vec{b_2} }{dt} \cdot \vec{b_3} +
+\vec{b_2} \frac{^{j} d \vec{b_3} }{dt} \cdot \vec{b_1} +
+\vec{b_3} \frac{^{j} d \vec{b_1} }{dt} \cdot \vec{b_2}
+\right) \times \vec{b_3}
+\,\, = \,\,
+- \vec{b_2} \frac{^{j} d \vec{b_2} }{dt} \cdot \vec{b_3} +
+\vec{b_1} \frac{^{j} d \vec{b_3} }{dt} \cdot \vec{b_1}
+$$
+
+Luego, se tiene que:
+
+$$
+\vec{b_3} \cdot \vec{b_3} = 1
+$$
+
+Entonces:
+
+$$ 
+\frac{^{j} d \vec{b_3} }{dt} \cdot \vec{b_3} + \vec{b_3} \cdot \frac{^{j} d \vec{b_3} }{dt} = 0
+ \,\,\,\,\,\, \rightarrow \,\,\,\,\,\,
+\frac{^{j} d \vec{b_3} }{dt} \cdot \vec{b_3} = 0  
+\,\,\,\,\,\, \rightarrow \,\,\,\,\,\,
+\vec{b_3} \frac{^{j} d \vec{b_3} }{dt} \cdot \vec{b_3} = \vec{0}
+$$
+
+De manera similar para:
+
+$$
+\vec{b_2} \cdot \vec{b_3} = 0
+$$
+
+Se tiene que:
+
+$$
+\frac{^{j} d \vec{b_2} }{dt} \cdot \vec{b_3} + \vec{b_2} \cdot \frac{^{j} d \vec{b_3} }{dt} = 0
+ \,\,\,\,\,\, \rightarrow \,\,\,\,\,\,
+\frac{^{j} d \vec{b_3} }{dt} \cdot \vec{b_2} = - \frac{^{j} d \vec{b_2} }{dt} \cdot \vec{b_3}
+$$
+
+Sustituyendo en la expresión obtenida:
+
+$$
+^{j}\vec{\omega}^{m} \times \vec{b_{3}} = 
+\frac{^{j} d \vec{b_2} }{dt} \cdot \vec{b_1}  \vec{b_1} +
+\frac{^{j} d \vec{b_2} }{dt} \cdot \vec{b_2}  \vec{b_2} +
+\frac{^{j} d \vec{b_2} }{dt} \cdot \vec{b_3}  \vec{b_3} = 
+\frac{^{j} d \vec{b_3} }{dt}
+$$
+
+\end{document}
